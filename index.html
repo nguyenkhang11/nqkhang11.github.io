@@ -17,6 +17,10 @@
   --border:#e2e8f0;
 }
 
+html {
+  scroll-behavior: smooth; /* Cuộn mượt khi nhấn vào Menu Contact */
+}
+
 *{box-sizing:border-box}
 body{
   margin:0;
@@ -29,7 +33,8 @@ body{
 nav{
   position:sticky;
   top:0;
-  background:white;
+  background:rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px); /* Hiệu ứng mờ nền cho hiện đại */
   border-bottom:1px solid var(--border);
   z-index:100;
 }
@@ -39,12 +44,14 @@ nav{
   padding:16px 20px;
   display:flex;
   justify-content:space-between;
+  align-items: center;
 }
 .nav-inner a{
   margin-left:20px;
   text-decoration:none;
   color:var(--sub);
   font-weight:500;
+  transition: 0.2s;
 }
 .nav-inner a:hover{color:var(--accent)}
 
@@ -52,82 +59,113 @@ nav{
 .container{
   max-width:1200px;
   margin:auto;
-  padding:50px 20px;
+  padding:60px 20px;
 }
 .split{
   display:grid;
-  grid-template-columns:1fr 1.2fr; /* Điều chỉnh lại tỷ lệ cột */
-  gap:60px;
+  grid-template-columns: 1fr 1.2fr;
+  gap:80px;
+  align-items: start;
 }
 
-/* INTRO - PHẦN CẬP NHẬT MỚI */
+/* INTRO */
 .intro{
   position:sticky;
-  top:100px;
-  align-self:start;
-  text-align: center; /* Căn giữa nội dung text */
-  padding-top: 20px;  /* Đẩy nội dung xuống một chút */
+  top:120px;
+  text-align: center;
 }
 .avatar{
-  width:180px; /* Tăng kích thước avatar */
-  height:180px;
-  border-radius:50%;
-  object-fit:cover;
-  border:6px solid white; /* Viền trắng dày tạo hiệu ứng nổi */
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); /* Thêm bóng đổ cho sang */
-  margin-bottom:25px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid white;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  margin: 0 auto 30px;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
 }
 .intro h1{
-    margin:0 0 15px;
-    font-weight: 800;
-    font-size: 2rem;
+  margin:0 0 15px;
+  font-size: 2.2rem;
+  font-weight: 800;
 }
 .intro p{
-    color:var(--sub);
-    line-height:1.8;
-    font-size: 1.05rem;
-    max-width: 400px; /* Giới hạn độ rộng để text không bị dàn quá dài */
-    margin: 0 auto;
+  color:var(--sub);
+  line-height:1.8;
+  font-size: 1.1rem;
+  max-width: 450px;
+  margin: 0 auto;
 }
 
 /* BLOG */
 .blog-item{
   background:var(--card);
   border:1px solid var(--border);
-  border-radius:18px;
-  padding:25px;
-  margin-bottom:25px;
-  transition:.3s;
+  border-radius:24px;
+  padding:30px;
+  margin-bottom:30px;
+  transition: all .3s ease;
 }
 .blog-item:hover{
-  transform:translateY(-6px);
+  transform:translateY(-8px);
   border-color:var(--accent);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
 }
-.blog-item h3{margin:10px 0; font-size: 1.4rem;}
-.blog-item p{color:var(--sub); line-height: 1.6}
-.tag{
-  font-size:.75rem;
-  font-weight:700;
-  color:var(--accent);
+.blog-item h3{ margin:12px 0; font-size: 1.5rem; }
+.tag{ font-size:.8rem; font-weight:700; color:var(--accent); }
+
+/* CONTACT SECTION - PHẦN MỚI THÊM */
+.contact-section {
+  margin-top: 100px;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 32px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+.contact-section h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+.contact-section p {
+  color: var(--sub);
+  margin-bottom: 30px;
+}
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+.contact-btn {
+  padding: 12px 25px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.contact-btn:hover {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+  transform: translateY(-3px);
 }
 
 /* FOOTER */
 footer{
   text-align:center;
   padding:60px 20px;
-  border-top:1px solid var(--border);
   color:var(--sub);
-  margin-top: 50px;
+  font-size: 0.9rem;
 }
 
 /* RESPONSIVE */
-@media(max-width:900px){
-  .split{grid-template-columns:1fr}
-  .intro{position:relative;top:0; padding-bottom: 40px; border-bottom: 1px solid var(--border)}
+@media(max-width:950px){
+  .split{grid-template-columns:1fr; gap: 40px;}
+  .intro{position:relative; top:0; padding-bottom: 40px; border-bottom: 1px solid var(--border)}
 }
 </style>
 </head>
@@ -136,32 +174,38 @@ footer{
 
 <nav>
   <div class="nav-inner">
-    <strong style="color:var(--accent); font-size: 1.2rem;">Khang Blog</strong>
+    <strong style="color:var(--accent); font-size: 1.3rem;">Khang Blog</strong>
     <div>
       <a href="#">Home</a>
       <a href="#">Blog</a>
       <a href="#">About</a>
-    </div>
+      <a href="#contact">Contact</a> </div>
   </div>
 </nav>
 
 <div class="container">
-
   <section class="split">
-
     <aside class="intro">
-      <img src="avatar.jpg" class="avatar" alt="Khang">
+      <img src="AvatarKhang.png" class="avatar" alt="Nguyễn Quốc Khang">
       <h1>Nguyễn Quốc Khang</h1>
       <p>
-        Chào bạn! Mình là Khang, sinh viên trường ĐH Công Nghệ Thành Phố Hồ Chí Minh, chuyên ngành Công nghệ phần mềm với niềm đam mê mãnh liệt dành cho phát triển Web và quản trị hệ thống mạng. <br><br>
-        Đây là không gian nhỏ nơi mình chia sẻ những bài học thực tế, các dự án cá nhân và hành trình khám phá thế giới công nghệ mỗi ngày. Hy vọng những chia sẻ của mình sẽ giúp ích được cho cộng đồng học lập trình! 
+        Xin chào! Mình là một sinh viên CNTT đam mê khám phá thế giới lập trình Web và hệ thống mạng. <br><br>
+        Chào mừng bạn đến với góc nhỏ chia sẻ kiến thức của mình! 🚀
       </p>
     </aside>
 
     <main id="blog"></main>
-
   </section>
 
+  <section class="contact-section" id="contact">
+    <h2>Kết nối với mình</h2>
+    <p>Bạn có câu hỏi hay muốn hợp tác? Đừng ngần ngại liên hệ nhé!</p>
+    <div class="contact-links">
+      <a href="mailto:your-email@gmail.com" class="contact-btn">Email của mình</a>
+      <a href="https://facebook.com/your-profile" target="_blank" class="contact-btn">Facebook</a>
+      <a href="https://github.com/your-github" target="_blank" class="contact-btn">GitHub</a>
+    </div>
+  </section>
 </div>
 
 <footer>
@@ -170,9 +214,9 @@ footer{
 
 <script>
 const posts=[
- {cat:"WEB",title:"Flexbox & Grid cho người mới",date:"12/12/2025",desc:"Cách xây dựng layout hiện đại, dễ bảo trì và tối ưu cho mọi thiết kế giao diện hiện nay."},
- {cat:"JS",title:"Async/Await là gì?",date:"10/12/2025",desc:"Nắm vững cách xử lý các tác vụ bất đồng bộ một cách đồng bộ hơn, giúp code của bạn sạch sẽ và dễ đọc hơn."},
- {cat:"NETWORK",title:"TCP vs UDP",date:"08/12/2025",desc:"Phân tích sự khác biệt cốt lõi giữa hai giao thức truyền tải quan trọng nhất trong hạ tầng mạng Internet."}
+ {cat:"WEB",title:"Làm chủ Flexbox & Grid",date:"12/12/2025",desc:"Hướng dẫn chi tiết cách dàn trang hiện đại giúp website của bạn linh hoạt trên mọi thiết kế."},
+ {cat:"JS",title:"Bí mật của Async/Await",date:"10/12/2025",desc:"Tìm hiểu cách viết mã JavaScript sạch đẹp và chuyên nghiệp hơn với cơ chế này."},
+ {cat:"NETWORK",title:"TCP vs UDP: Khi nào nên dùng?",date:"08/12/2025",desc:"So sánh chuyên sâu về hai giao thức cốt lõi để tối ưu hóa ứng dụng mạng của bạn."}
 ];
 
 const blog=document.getElementById("blog");
@@ -182,7 +226,7 @@ posts.forEach(p=>{
       <div class="tag">${p.cat} • ${p.date}</div>
       <h3>${p.title}</h3>
       <p>${p.desc}</p>
-      <a href="#" style="color:var(--accent);font-weight:600; text-decoration: none;">Đọc tiếp →</a>
+      <a href="#" style="color:var(--accent);font-weight:700; text-decoration: none;">Đọc chi tiết →</a>
     </article>
   `;
 });
