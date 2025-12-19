@@ -1,53 +1,294 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang Chủ</title>
-    
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .container {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        h1 { color: #333; }
-        button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        button:hover { background-color: #0056b3; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nguyễn Quốc Khang | Blog cá nhân</title>
+
+  <style>
+    :root {
+      --primary: #6366f1;
+      --secondary: #22c55e;
+      --bg: #f9fafb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(180deg, #eef2ff, #f9fafb);
+      color: var(--text);
+    }
+
+    /* ===== NAVBAR ===== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .navbar {
+      max-width: 1100px;
+      margin: auto;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: var(--primary);
+    }
+
+    nav a {
+      margin-left: 1.2rem;
+      text-decoration: none;
+      font-weight: 500;
+      color: var(--muted);
+      position: relative;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* ===== LAYOUT ===== */
+    main {
+      max-width: 1100px;
+      margin: auto;
+      padding: 3rem 1rem;
+    }
+
+    section {
+      margin-bottom: 4rem;
+    }
+
+    h1, h2 {
+      margin-top: 0;
+    }
+
+    /* ===== INTRO ===== */
+    .intro {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .intro h1 {
+      font-size: 2.5rem;
+    }
+
+    .intro span {
+      color: var(--primary);
+    }
+
+    .intro p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    .intro-card {
+      background: var(--card);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+    }
+
+    /* ===== POSTS ===== */
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .post {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 1.5rem;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .post:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 25px 45px rgba(0,0,0,0.08);
+    }
+
+    .post h3 {
+      margin-top: 0;
+    }
+
+    .post p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .tags {
+      margin-top: 1rem;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #eef2ff;
+      color: var(--primary);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      margin-right: 6px;
+    }
+
+    /* ===== ABOUT ===== */
+    .about {
+      background: linear-gradient(135deg, #6366f1, #22c55e);
+      color: white;
+      padding: 3rem;
+      border-radius: 24px;
+    }
+
+    .about p {
+      max-width: 700px;
+      line-height: 1.8;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--muted);
+      border-top: 1px solid #e5e7eb;
+    }
+
+    @media (max-width: 768px) {
+      .intro {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-    <div class="container">
-        <h1>Xin chào! Đây là trang Index</h1>
-        <p>Hệ thống đang hoạt động tốt.</p>
-        <button onclick="showAlert()">Bấm vào tôi</button>
+<header>
+  <div class="navbar">
+    <div class="logo">Khang.dev</div>
+    <nav>
+      <a href="#home">Trang chủ</a>
+      <a href="#posts">Bài viết</a>
+      <a href="#categories">Danh mục</a>
+      <a href="#about">Về tôi</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- INTRO -->
+  <section id="home" class="intro">
+    <div>
+      <h1>Xin chào 👋<br>Mình là <span>Nguyễn Quốc Khang</span></h1>
+      <p>
+        Đây là blog cá nhân nơi mình ghi chép về lập trình web,
+        backend, những thứ mình học được và cả những kinh nghiệm thực tế.
+      </p>
     </div>
 
-    <script>
-        function showAlert() {
-            alert('Bạn đã bấm nút thành công!');
-        }
-    </script>
+    <div class="intro-card">
+      <strong>📌 Chủ đề chính</strong>
+      <ul>
+        <li>Web Development</li>
+        <li>JavaScript / Node.js</li>
+        <li>Backend & API</li>
+        <li>Kinh nghiệm học tập</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- POSTS -->
+  <section id="posts">
+    <h2>📝 Bài viết</h2>
+
+    <div class="posts-grid">
+      <div class="post">
+        <h3>CORS là gì?</h3>
+        <p>Giải thích dễ hiểu về CORS và vì sao trình duyệt chặn request.</p>
+        <div class="tags">
+          <span class="tag">Web</span>
+          <span class="tag">Security</span>
+        </div>
+      </div>
+
+      <div class="post">
+        <h3>RESTful API cơ bản</h3>
+        <p>Những nguyên tắc quan trọng khi thiết kế API chuẩn REST.</p>
+        <div class="tags">
+          <span class="tag">Backend</span>
+          <span class="tag">API</span>
+        </div>
+      </div>
+
+      <div class="post">
+        <h3>JSON hoạt động như thế nào?</h3>
+        <p>Hiểu đúng về JSON và cách dùng hiệu quả trong JavaScript.</p>
+        <div class="tags">
+          <span class="tag">JavaScript</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section id="categories">
+    <h2>📂 Danh mục</h2>
+    <div class="tags">
+      <span class="tag">Web</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">Backend</span>
+      <span class="tag">Security</span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <h2>🙋‍♂️ Về tôi</h2>
+    <p>
+      Mình là Nguyễn Quốc Khang, yêu thích lập trình và chia sẻ kiến thức.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  © 2025 KhangNQ - Blog cá nhân
+</footer>
 
 </body>
 </html>
