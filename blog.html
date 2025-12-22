@@ -23,8 +23,9 @@
 <div class="container">
     <h1 class="page-title">Blog Lập Trình Mạng</h1>
     
-    <div class="grid-layout" id="blog-list">
-        </div>
+    <div id="status-msg" style="text-align:center; color:gray; font-style:italic;">Đang tải dữ liệu...</div>
+
+    <div class="grid-layout" id="blog-list"></div>
 </div>
 
 <footer>© 2025 • Nguyễn Quốc Khang</footer>
@@ -33,29 +34,30 @@
 
 <script>
     const blogContainer = document.getElementById('blog-list');
+    const statusMsg = document.getElementById('status-msg');
 
-    // SỬA: Dùng tên 'blogdata' (chữ thường) để khớp với file trên GitHub của bạn
-    // Kiểm tra xem biến blogdata có tồn tại không
-    if (typeof blogdata !== 'undefined') {
-        blogdata.forEach(post => {
+    // Kiểm tra biến MỚI là postsData
+    if (typeof postsData !== 'undefined') {
+        // Xóa thông báo đang tải
+        statusMsg.style.display = 'none';
+        
+        postsData.forEach(post => {
             blogContainer.innerHTML += `
                 <article class="card">
                     <span class="tag">${post.cat} • ${post.date}</span>
                     <h3>${post.title}</h3>
                     <p>${post.desc}</p>
-                    
                     <a href="post.html?id=${post.id}" style="color:var(--accent); font-weight:600; text-decoration:none">Đọc tiếp →</a>
                 </article>
             `;
         });
     } else {
-        // Nếu vẫn lỗi, hiện thông báo chi tiết
-        console.error("Vẫn chưa tìm thấy biến 'blogdata'");
-        blogContainer.innerHTML = `
-            <div style="text-align:center; color: red; padding:30px; border:1px dashed red;">
-                <h3>⚠️ Vẫn chưa tải được dữ liệu</h3>
-                <p>Code đang tìm biến tên là: <b>blogdata</b> (chữ thường)</p>
-                <p>Bạn hãy mở file <i>blog-data.js</i> và kiểm tra dòng đầu tiên xem có phải là <code>const blogdata = [</code> không nhé.</p>
+        // Báo lỗi rõ ràng
+        statusMsg.innerHTML = `
+            <div style="color: red; border: 2px dashed red; padding: 20px; display:inline-block;">
+                <h3>⚠️ Lỗi: Không tìm thấy biến 'postsData'</h3>
+                <p>Hãy kiểm tra file <b>blog-data.js</b> trên GitHub.</p>
+                <p>Dòng đầu tiên của file đó PHẢI LÀ: <code>const postsData = [</code></p>
             </div>
         `;
     }
