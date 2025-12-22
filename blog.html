@@ -4,7 +4,113 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Lập Trình Mạng | Nguyễn Quốc Khang</title>
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- 1. CSS CƠ BẢN (GIỮ NGUYÊN) --- */
+        :root{ --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --sub:#475569; --accent:#6366f1; --border:#e2e8f0; }
+        *{box-sizing:border-box}
+        body{ margin:0; font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); line-height: 1.6; }
+
+        /* NAV */
+        nav{ position:sticky; top:0; background:rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); border-bottom:1px solid var(--border); z-index:100; }
+        .nav-inner{ max-width:1200px; margin:auto; padding:16px 20px; display:flex; justify-content:space-between; align-items: center; }
+        .nav-inner a{ margin-left:20px; text-decoration:none; color:var(--sub); font-weight:500; transition: 0.2s; cursor: pointer;}
+        .nav-inner a:hover, .nav-inner a.active{ color:var(--accent); }
+
+        /* LAYOUT */
+        .container{ max-width:1000px; margin:auto; padding:40px 20px; min-height: 80vh; }
+        h1.page-title{ text-align: center; margin-bottom: 40px; }
+        
+        /* GRID BÀI VIẾT */
+        .grid-layout{ display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; }
+        .card{ background: var(--card); padding: 25px; border-radius: 16px; border: 1px solid var(--border); transition: 0.3s; display: flex; flex-direction: column; }
+        .card:hover{ border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        .card h3{ margin: 10px 0; font-size: 1.25rem; }
+        .card p { flex-grow: 1; color: var(--sub); font-size: 0.95rem; }
+        .tag{ font-size:0.8rem; font-weight:700; color:var(--accent); text-transform: uppercase; }
+        
+        /* NÚT ĐỌC TIẾP */
+        .read-more-btn {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--accent);
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            background: none;
+            padding: 0;
+            font-size: 1rem;
+        }
+        .read-more-btn:hover { text-decoration: underline; }
+
+        /* --- 2. CSS CHO POPUP (MODAL) - PHẦN MỚI --- */
+        .modal {
+            display: none; /* Mặc định ẩn */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6); /* Màu nền đen mờ */
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh; /* Chiều cao tối đa 90% màn hình */
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-header {
+            padding: 20px 30px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .close-btn {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            line-height: 1;
+            transition: 0.2s;
+        }
+        .close-btn:hover { color: red; }
+
+        .modal-body {
+            padding: 30px;
+            overflow-y: auto; /* Cho phép cuộn nội dung nếu quá dài */
+            font-size: 1.1rem;
+            color: #334155;
+        }
+        
+        /* Style cho nội dung bài viết bên trong Popup */
+        .modal-body h3 { margin-top: 25px; color: var(--text); }
+        .modal-body pre { background: #f1f5f9; padding: 15px; border-radius: 8px; overflow-x: auto; font-family: monospace; font-size: 0.9rem; border: 1px solid #e2e8f0; }
+        .modal-body ul, .modal-body ol { margin-left: 20px; }
+        .modal-body li { margin-bottom: 8px; }
+
+    </style>
 </head>
 <body>
 
@@ -12,54 +118,240 @@
     <div class="nav-inner">
         <strong style="color:var(--accent); font-size: 1.3rem;">Khang Blog</strong>
         <div>
-            <a href="index.html" class="menu-link">Home</a>
-            <a href="blog.html" class="menu-link active">Blog</a>
-            <a href="about.html" class="menu-link">About</a>
-            <a href="contact.html" class="menu-link">Contact</a>
+            <a href="index.html">Home</a>
+            <a href="blog.html" class="active">Blog</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
         </div>
     </div>
 </nav>
 
 <div class="container">
     <h1 class="page-title">Blog Lập Trình Mạng</h1>
-    
-    <div id="status-msg" style="text-align:center; color:gray; font-style:italic;">Đang tải dữ liệu...</div>
-
-    <div class="grid-layout" id="blog-list"></div>
+    <div class="grid-layout" id="blog-list">
+        </div>
 </div>
 
-<footer>© 2025 • Nguyễn Quốc Khang</footer>
+<footer>
+    <div style="text-align: center; padding: 40px; color: var(--sub); border-top: 1px solid var(--border);">
+        © 2025 • Nguyễn Quốc Khang • Blog Cá Nhân
+    </div>
+</footer>
 
-<script src="blog-data.js"></script>
+<div id="postModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <div style="padding-right: 20px;">
+                <span id="m-tag" class="tag">CAT</span>
+                <h2 id="m-title" style="margin: 5px 0 0; font-size: 1.8rem;">Tiêu đề bài viết</h2>
+                <span id="m-date" style="font-size: 0.9rem; color: var(--sub); font-style: italic;">Ngày đăng</span>
+            </div>
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+        </div>
+        <div class="modal-body" id="m-body">
+            </div>
+    </div>
+</div>
 
 <script>
-    const blogContainer = document.getElementById('blog-list');
-    const statusMsg = document.getElementById('status-msg');
+    // DỮ LIỆU BÀI VIẾT (Nằm trực tiếp ở đây, không cần file ngoài)
+    const posts = [
+        {
+            id: 1,
+            title: "Socket Programming cơ bản với Python",
+            date: "20/12/2025",
+            cat: "CODE",
+            desc: "Cách tạo client-server đơn giản bằng thư viện socket.",
+            content: `
+                <p>Lập trình Socket là nền tảng của mọi ứng dụng mạng. Trong bài viết này, chúng ta sẽ đi sâu vào việc xây dựng một mô hình Client-Server đơn giản sử dụng Python.</p>
+                <h3>1. Socket là gì?</h3>
+                <p>Socket là một điểm cuối (endpoint) trong liên kết truyền thông hai chiều giữa hai chương trình chạy trên mạng.</p>
+                <h3>2. Code ví dụ: Echo Server</h3>
+                <pre>import socket
+HOST = '127.0.0.1'
+PORT = 65432
+# Code Python minh họa kết nối socket...</pre>
+                <p>Đây là kỹ thuật cơ bản nhất để hai máy tính nói chuyện với nhau.</p>
+            `
+        },
+        {
+            id: 2,
+            title: "Phân tích gói tin với Wireshark",
+            date: "18/12/2025",
+            cat: "TOOLS",
+            desc: "Hướng dẫn bắt và đọc các gói tin HTTP, TCP trong mạng LAN.",
+            content: `
+                <p>Wireshark giúp bạn "nhìn thấy" dòng chảy dữ liệu trong dây cáp mạng.</p>
+                <h3>Tại sao cần Wireshark?</h3>
+                <p>Khi lập trình mạng, nếu gói tin không đến nơi, bạn cần Wireshark để biết nó bị chặn ở đâu (Firewall, sai IP, hay mất gói).</p>
+                <h3>Bộ lọc quan trọng</h3>
+                <ul>
+                    <li><code>ip.addr == 192.168.1.5</code>: Lọc theo IP</li>
+                    <li><code>tcp.port == 80</code>: Lọc Web Traffic</li>
+                </ul>
+            `
+        },
+        {
+            id: 3,
+            title: "Mô hình OSI vs TCP/IP",
+            date: "15/12/2025",
+            cat: "THEORY",
+            desc: "Sự khác biệt thực tế giữa lý thuyết và triển khai hiện đại.",
+            content: `
+                <p>Lý thuyết dạy 7 tầng (OSI), nhưng thực tế Internet chạy 4 tầng (TCP/IP).</p>
+                <h3>Quá trình đóng gói dữ liệu:</h3>
+                <ol>
+                    <li>Application: Tạo dữ liệu (HTTP)</li>
+                    <li>Transport: Thêm cổng (TCP Port)</li>
+                    <li>Internet: Thêm địa chỉ IP</li>
+                    <li>Network Access: Thêm địa chỉ MAC</li>
+                </ol>
+            `
+        },
+        {
+            id: 4,
+            title: "Xây dựng HTTP Server từ con số 0",
+            date: "10/12/2025",
+            cat: "CODE",
+            desc: "Hiểu sâu về giao thức HTTP bằng cách tự viết server.",
+            content: `
+                <p>Thay vì dùng Apache hay Nginx, hãy thử tự viết server để hiểu bản chất.</p>
+                <h3>HTTP Header trông như thế nào?</h3>
+                <pre>GET /index.html HTTP/1.1
+Host: localhost
+User-Agent: Mozilla/5.0...</pre>
+                <p>Server của bạn phải đọc chuỗi văn bản này và trả về file HTML tương ứng.</p>
+            `
+        },
+        {
+            id: 5,
+            title: "Load Balancing là gì?",
+            date: "05/12/2025",
+            cat: "SYSTEM",
+            desc: "Các thuật toán cân bằng tải: Round Robin, Least Connections.",
+            content: `
+                <p>Khi 1 server không chịu nổi 1 triệu user, ta cần Load Balancer.</p>
+                <h3>Các thuật toán phổ biến:</h3>
+                <ul>
+                    <li><strong>Round Robin:</strong> Chia đều lần lượt từng người.</li>
+                    <li><strong>Least Connections:</strong> Ai đang rảnh nhất thì giao việc.</li>
+                    <li><strong>IP Hash:</strong> User A luôn vào Server A (để giữ phiên đăng nhập).</li>
+                </ul>
+            `
+        },
+        {
+            id: 6,
+            title: "Websocket vs REST API",
+            date: "01/12/2025",
+            cat: "WEB",
+            desc: "Khi nào cần giao tiếp thời gian thực?",
+            content: `
+                <p>REST là hỏi-đáp. WebSocket là đàm thoại liên tục.</p>
+                <p>Dùng WebSocket cho: Game Online, Chat App, Chứng khoán.</p>
+                <p>Dùng REST cho: Web tin tức, Blog, Thương mại điện tử.</p>
+            `
+        },
+        {
+            id: 7,
+            title: "Bảo mật mạng với Firewall (iptables)",
+            date: "28/11/2025",
+            cat: "SECURITY",
+            desc: "Cấu hình iptables cơ bản trên Linux.",
+            content: `
+                <p>Linux có sẵn tường lửa cực mạnh là iptables.</p>
+                <pre># Chặn toàn bộ kết nối vào
+iptables -P INPUT DROP
+# Chỉ mở cổng Web (80)
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT</pre>
+            `
+        },
+        {
+            id: 8,
+            title: "Tìm hiểu về DNS Lookup",
+            date: "25/11/2025",
+            cat: "NETWORK",
+            desc: "Quy trình phân giải tên miền.",
+            content: `
+                <p>DNS là danh bạ của Internet.</p>
+                <p>Khi bạn gõ google.com -> Máy hỏi DNS Server -> DNS trả về IP 142.250.x.x -> Máy kết nối tới IP đó.</p>
+            `
+        },
+        {
+            id: 9,
+            title: "Đa luồng (Multi-threading) trong Server",
+            date: "20/11/2025",
+            cat: "CODE",
+            desc: "Xử lý nhiều kết nối đồng thời.",
+            content: `
+                <p>Nếu không dùng đa luồng, server chỉ phục vụ được 1 người tại 1 thời điểm.</p>
+                <p>Giải pháp: Mỗi khi có khách mới, server "nhân bản" ra một luồng xử lý riêng (Thread) để phục vụ khách đó.</p>
+            `
+        },
+        {
+            id: 10,
+            title: "SSH Key và cơ chế xác thực",
+            date: "15/11/2025",
+            cat: "SECURITY",
+            desc: "Tại sao nên dùng SSH Key thay vì mật khẩu?",
+            content: `
+                <p>Mật khẩu có thể bị đoán mò (Brute-force). SSH Key dùng toán học mã hóa để xác thực, an toàn hơn gấp ngàn lần.</p>
+                <p>Bạn giữ chìa khóa bí mật (Private Key), server giữ ổ khóa công khai (Public Key).</p>
+            `
+        }
+    ];
 
-    // Kiểm tra biến MỚI là postsData
-    if (typeof postsData !== 'undefined') {
-        // Xóa thông báo đang tải
-        statusMsg.style.display = 'none';
-        
-        postsData.forEach(post => {
-            blogContainer.innerHTML += `
-                <article class="card">
-                    <span class="tag">${post.cat} • ${post.date}</span>
-                    <h3>${post.title}</h3>
-                    <p>${post.desc}</p>
-                    <a href="post.html?id=${post.id}" style="color:var(--accent); font-weight:600; text-decoration:none">Đọc tiếp →</a>
-                </article>
-            `;
-        });
-    } else {
-        // Báo lỗi rõ ràng
-        statusMsg.innerHTML = `
-            <div style="color: red; border: 2px dashed red; padding: 20px; display:inline-block;">
-                <h3>⚠️ Lỗi: Không tìm thấy biến 'postsData'</h3>
-                <p>Hãy kiểm tra file <b>blog-data.js</b> trên GitHub.</p>
-                <p>Dòng đầu tiên của file đó PHẢI LÀ: <code>const postsData = [</code></p>
-            </div>
+    // 1. HIỂN THỊ DANH SÁCH BÀI VIẾT RA NGOÀI
+    const listContainer = document.getElementById('blog-list');
+    
+    posts.forEach(post => {
+        listContainer.innerHTML += `
+            <article class="card">
+                <span class="tag">${post.cat} • ${post.date}</span>
+                <h3>${post.title}</h3>
+                <p>${post.desc}</p>
+                <button class="read-more-btn" onclick="openModal(${post.id})">Đọc chi tiết →</button>
+            </article>
         `;
+    });
+
+    // 2. CÁC HÀM XỬ LÝ POPUP
+    const modal = document.getElementById("postModal");
+    const mTitle = document.getElementById("m-title");
+    const mTag = document.getElementById("m-tag");
+    const mDate = document.getElementById("m-date");
+    const mBody = document.getElementById("m-body");
+
+    // Hàm mở Popup
+    function openModal(id) {
+        // Tìm bài viết trong mảng dữ liệu
+        const post = posts.find(p => p.id === id);
+        
+        if(post) {
+            // Điền dữ liệu vào Popup
+            mTitle.innerText = post.title;
+            mTag.innerText = post.cat;
+            mDate.innerText = "Ngày đăng: " + post.date;
+            mBody.innerHTML = post.content;
+            
+            // Hiện Popup (dùng Flex để căn giữa)
+            modal.style.display = "flex";
+            
+            // Khóa cuộn trang web bên dưới
+            document.body.style.overflow = "hidden";
+        }
+    }
+
+    // Hàm đóng Popup
+    function closeModal() {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto"; // Mở lại cuộn trang
+    }
+
+    // Khi click ra ngoài vùng trắng của popup thì cũng đóng lại
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            closeModal();
+        }
     }
 </script>
 
