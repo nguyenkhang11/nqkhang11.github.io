@@ -1,1 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Lập Trình Mạng | Nguyễn Quốc Khang</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<nav>
+    <div class="nav-inner">
+        <strong style="color:var(--accent); font-size: 1.3rem;">Khang Blog</strong>
+        <div>
+            <a href="index.html" class="menu-link">Home</a>
+            <a href="blog.html" class="menu-link active">Blog</a>
+            <a href="about.html" class="menu-link">About</a>
+            <a href="contact.html" class="menu-link">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <h1 class="page-title">Blog Lập Trình Mạng</h1>
+    
+    <div class="grid-layout" id="blog-list">
+        </div>
+</div>
+
+<footer>© 2025 • Nguyễn Quốc Khang</footer>
+
+<script>
+    // Dữ liệu 10 bài viết
+    const posts = [
+        {title: "Socket Programming cơ bản với Python", date: "20/12", desc: "Cách tạo client-server đơn giản bằng thư viện socket."},
+        {title: "Phân tích gói tin với Wireshark", date: "18/12", desc: "Hướng dẫn bắt và đọc các gói tin HTTP, TCP trong mạng LAN."},
+        {title: "Mô hình OSI vs TCP/IP", date: "15/12", desc: "Sự khác biệt thực tế giữa lý thuyết và triển khai hiện đại."},
+        {title: "Xây dựng HTTP Server từ con số 0", date: "10/12", desc: "Hiểu sâu về giao thức HTTP bằng cách tự viết server bằng C++."},
+        {title: "Load Balancing là gì?", date: "05/12", desc: "Các thuật toán cân bằng tải: Round Robin, Least Connections."},
+        {title: "Websocket vs REST API", date: "01/12", desc: "Khi nào cần giao tiếp thời gian thực (Real-time)?"},
+        {title: "Bảo mật mạng với Firewall", date: "28/11", desc: "Cấu hình iptables cơ bản trên Linux để chặn kết nối lạ."},
+        {title: "Tìm hiểu về DNS Lookup", date: "25/11", desc: "Điều gì xảy ra khi bạn gõ google.com vào trình duyệt?"},
+        {title: "Đa luồng (Multi-threading) trong Server", date: "20/11", desc: "Xử lý hàng ngàn kết nối đồng thời mà không bị chặn (blocking)."},
+        {title: "SSH Key và cơ chế xác thực", date: "15/11", desc: "Tại sao nên dùng SSH Key thay vì mật khẩu truyền thống?"}
+    ];
+
+    const blogContainer = document.getElementById('blog-list');
+    posts.forEach(post => {
+        blogContainer.innerHTML += `
+            <article class="card">
+                <span class="tag">NETWORK • ${post.date}</span>
+                <h3>${post.title}</h3>
+                <p>${post.desc}</p>
+                <a href="#" style="color:var(--accent); font-weight:600; text-decoration:none">Đọc tiếp →</a>
+            </article>
+        `;
+    });
+</script>
+</body>
+</html>
