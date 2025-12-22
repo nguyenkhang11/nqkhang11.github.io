@@ -1,4 +1,4 @@
-const blogdata = [
+const blogData = [
   {
     id: 1,
     title: "Socket Programming cơ bản với Python",
