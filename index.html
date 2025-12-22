@@ -18,7 +18,7 @@
 }
 
 html {
-  scroll-behavior: smooth; /* Cuộn mượt khi nhấn vào Menu Contact */
+  scroll-behavior: smooth; /* Cuộn mượt */
 }
 
 *{box-sizing:border-box}
@@ -34,7 +34,7 @@ nav{
   position:sticky;
   top:0;
   background:rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px); /* Hiệu ứng mờ nền cho hiện đại */
+  backdrop-filter: blur(10px);
   border-bottom:1px solid var(--border);
   z-index:100;
 }
@@ -54,6 +54,11 @@ nav{
   transition: 0.2s;
 }
 .nav-inner a:hover{color:var(--accent)}
+
+/* QUAN TRỌNG: Giúp khi click không bị thanh menu che mất nội dung */
+section, aside, main, div {
+    scroll-margin-top: 100px; 
+}
 
 /* LAYOUT */
 .container{
@@ -113,7 +118,7 @@ nav{
 .blog-item h3{ margin:12px 0; font-size: 1.5rem; }
 .tag{ font-size:.8rem; font-weight:700; color:var(--accent); }
 
-/* CONTACT SECTION - PHẦN MỚI THÊM */
+/* CONTACT SECTION */
 .contact-section {
   margin-top: 100px;
   padding: 60px 20px;
@@ -170,22 +175,21 @@ footer{
 </style>
 </head>
 
-<body>
-
-<nav>
+<body id="home"> <nav>
   <div class="nav-inner">
     <strong style="color:var(--accent); font-size: 1.3rem;">Khang Blog</strong>
     <div>
-      <a href="#">Home</a>
-      <a href="#">Blog</a>
-      <a href="#">About</a>
-      <a href="#contact">Contact</a> </div>
+      <a href="#home">Home</a>
+      <a href="#blog">Blog</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a> 
+    </div>
   </div>
 </nav>
 
 <div class="container">
   <section class="split">
-    <aside class="intro">
+    <aside class="intro" id="about">
       <img src="AvatarKhang.png" class="avatar" alt="Nguyễn Quốc Khang">
       <h1>Nguyễn Quốc Khang</h1>
       <p>
