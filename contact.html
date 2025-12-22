@@ -1,190 +1,51 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Liên hệ | Nguyễn Quốc Khang</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-<style>
-:root{
-  --bg:#f8fafc;
-  --card:#ffffff;
-  --text:#0f172a;
-  --sub:#475569;
-  --accent:#6366f1; /* Indigo của Khang */
-  --border:#e2e8f0;
-}
-
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:'Inter',sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height: 1.6;
-}
-
-/* NAV */
-nav{
-  position:sticky;
-  top:0;
-  background:rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  border-bottom:1px solid var(--border);
-  z-index:100;
-}
-.nav-inner{
-  max-width:1200px;
-  margin:auto;
-  padding:16px 20px;
-  display:flex;
-  justify-content:space-between;
-  align-items: center;
-}
-.nav-inner a{
-  margin-left:20px;
-  text-decoration:none;
-  color:var(--sub);
-  font-weight:500;
-  transition: 0.2s;
-}
-.nav-inner a:hover, .nav-inner a.active{color:var(--accent)}
-
-/* CONTACT WRAPPER */
-.contact-wrapper {  
-    max-width: 800px;  
-    margin: 80px auto;  
-    padding: 0 20px;  
-    text-align: center;  
-}
-.contact-header h1 { 
-    font-size: 2.8rem; 
-    font-weight: 800;
-    margin-bottom: 15px;
-}
-.contact-header p { 
-    color: var(--sub); 
-    margin-bottom: 50px; 
-    font-size: 1.1rem;
-}
-
-/* THẺ CHỨA CHÍNH */
-.contact-info-box {
-    background: var(--card);
-    padding: 60px 40px;
-    border-radius: 32px;
-    border: 1px solid var(--border);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-}
-
-.info-item {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: var(--text);
-    background: var(--bg);
-    padding: 22px 30px;
-    border-radius: 20px;
-    width: 100%;
-    max-width: 480px;
-    transition: all 0.3s ease;
-    border: 1px solid var(--border);
-}
-.info-item:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent);
-    background: white;
-    box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.1);
-}
-.info-item i {
-    font-size: 26px;
-    color: var(--accent);
-    margin-right: 25px;
-    width: 30px;
-    text-align: center;
-}
-.info-text { text-align: left; }
-.info-text strong { 
-    display: block; 
-    font-size: 0.75rem; 
-    color: var(--accent); 
-    text-transform: uppercase; 
-    letter-spacing: 1px;
-    margin-bottom: 4px;
-}
-.info-text span { font-size: 1.15rem; font-weight: 700; }
-
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:60px 20px;
-  border-top: 1px solid var(--border);
-  color:var(--sub);
-  margin-top: 100px;
-}
-
-@media(max-width:600px){
-    .contact-header h1 { font-size: 2rem; }
-    .contact-info-box { padding: 40px 20px; }
-}
-</style>
-</head>
+    <meta charset="UTF-8">
+    <title>Liên Hệ | Nguyễn Quốc Khang</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
 <body>
 
 <nav>
-  <div class="nav-inner">
-    <a href="index.html" style="margin-left:0; font-weight:800; color:var(--accent); font-size: 1.3rem; text-decoration:none;">Khang Blog</a>
-    <div>
-      <a href="index.html">Trang chủ</a>
-      <a href="#">Blog</a>
-      <a href="contact.html" class="active">Liên hệ</a>
+    <div class="nav-inner">
+        <strong style="color:var(--accent); font-size: 1.3rem;">Khang Blog</strong>
+        <div>
+            <a href="index.html" class="menu-link">Home</a>
+            <a href="blog.html" class="menu-link">Blog</a>
+            <a href="about.html" class="menu-link">About</a>
+            <a href="contact.html" class="menu-link active">Contact</a>
+        </div>
     </div>
-  </div>
 </nav>
 
-<div class="contact-wrapper">
-    <div class="contact-header">
-        <h1>Kết Nối Với Khang</h1>
-        <p>Gửi lời chào hoặc cùng mình thảo luận về công nghệ nhé!</p>
-    </div>
+<div class="container" style="text-align: center;">
+    <h1 class="page-title">Kết nối với mình</h1>
+    <p style="margin-bottom: 50px; color: var(--sub);">Bạn có thể tìm thấy mình ở các kênh dưới đây. Rất vui được trao đổi về công nghệ!</p>
 
-    <div class="contact-info-box">
-        <a href="https://facebook.com/your-profile" class="info-item" target="_blank">
-            <i class="fab fa-facebook"></i>
-            <div class="info-text">
-                <strong>Facebook</strong>
-                <span>Nguyễn Quốc Khang</span>
-            </div>
-        </a>
+    <div class="grid-layout" style="max-width: 800px; margin: auto;">
+        
+        <div class="card" style="padding: 40px;">
+            <h3 style="color:#1877F2">Facebook</h3>
+            <p>Theo dõi hoạt động cá nhân</p>
+            <a href="https://facebook.com/your-id" target="_blank" class="btn" style="background: #1877F2;">Truy cập Profile</a>
+        </div>
 
-        <a href="https://github.com/nguyenkhang11" class="info-item" target="_blank">
-            <i class="fab fa-github"></i>
-            <div class="info-text">
-                <strong>GitHub</strong>
-                <span>Blog của Khang</span>
-            </div>
-        </a>
+        <div class="card" style="padding: 40px;">
+            <h3 style="color:#0068FF">Zalo / Phone</h3>
+            <p>Liên hệ trực tiếp: 09xx.xxx.xxx</p>
+            <a href="https://zalo.me/09xxxxxxxx" target="_blank" class="btn" style="background: #0068FF;">Chat Zalo</a>
+        </div>
 
-        <a href="mailto:nqkhang5c21.22ntmkhai@gmail.com" class="info-item">
-            <i class="fas fa-envelope"></i>
-            <div class="info-text">
-                <strong>Email</strong>
-                <span>nqkhang5c21.22ntmkhai@gmail.com</span>
-            </div>
-        </a>
+        <div class="card" style="padding: 40px;">
+            <h3 style="color:#333">GitHub</h3>
+            <p>Xem source code các dự án</p>
+            <a href="https://github.com/your-id" target="_blank" class="btn" style="background: #333;">Xem Repos</a>
+        </div>
+
     </div>
 </div>
 
-<footer>
-© 2025 • Nguyễn Quốc Khang • Blog Cá Nhân
-</footer>
-
+<footer>© 2025 • Nguyễn Quốc Khang</footer>
 </body>
 </html>
