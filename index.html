@@ -1,240 +1,63 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nguyễn Quốc Khang | Tech Blog</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-:root{
-  --bg:#f8fafc;
-  --card:#ffffff;
-  --text:#0f172a;
-  --sub:#475569;
-  --accent:#6366f1;
-  --border:#e2e8f0;
-}
-
-html {
-  scroll-behavior: smooth; /* Cuộn mượt */
-}
-
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:'Inter',sans-serif;
-  background:var(--bg);
-  color:var(--text);
-}
-
-/* NAV */
-nav{
-  position:sticky;
-  top:0;
-  background:rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  border-bottom:1px solid var(--border);
-  z-index:100;
-}
-.nav-inner{
-  max-width:1200px;
-  margin:auto;
-  padding:16px 20px;
-  display:flex;
-  justify-content:space-between;
-  align-items: center;
-}
-.nav-inner a{
-  margin-left:20px;
-  text-decoration:none;
-  color:var(--sub);
-  font-weight:500;
-  transition: 0.2s;
-}
-.nav-inner a:hover{color:var(--accent)}
-
-/* QUAN TRỌNG: Giúp khi click không bị thanh menu che mất nội dung */
-section, aside, main, div {
-    scroll-margin-top: 100px; 
-}
-
-/* LAYOUT */
-.container{
-  max-width:1200px;
-  margin:auto;
-  padding:60px 20px;
-}
-.split{
-  display:grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap:80px;
-  align-items: start;
-}
-
-/* INTRO */
-.intro{
-  position:sticky;
-  top:120px;
-  text-align: center;
-}
-.avatar{
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 6px solid white;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  margin: 0 auto 30px;
-  display: block;
-}
-.intro h1{
-  margin:0 0 15px;
-  font-size: 2.2rem;
-  font-weight: 800;
-}
-.intro p{
-  color:var(--sub);
-  line-height:1.8;
-  font-size: 1.1rem;
-  max-width: 450px;
-  margin: 0 auto;
-}
-
-/* BLOG */
-.blog-item{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:24px;
-  padding:30px;
-  margin-bottom:30px;
-  transition: all .3s ease;
-}
-.blog-item:hover{
-  transform:translateY(-8px);
-  border-color:var(--accent);
-}
-.blog-item h3{ margin:12px 0; font-size: 1.5rem; }
-.tag{ font-size:.8rem; font-weight:700; color:var(--accent); }
-
-/* CONTACT SECTION */
-.contact-section {
-  margin-top: 100px;
-  padding: 60px 20px;
-  background: white;
-  border-radius: 32px;
-  text-align: center;
-  border: 1px solid var(--border);
-}
-.contact-section h2 {
-  font-size: 2rem;
-  font-weight: 800;
-  margin-bottom: 10px;
-}
-.contact-section p {
-  color: var(--sub);
-  margin-bottom: 30px;
-}
-.contact-links {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-.contact-btn {
-  padding: 12px 25px;
-  border-radius: 12px;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s;
-  background: var(--bg);
-  color: var(--text);
-  border: 1px solid var(--border);
-}
-.contact-btn:hover {
-  background: var(--accent);
-  color: white;
-  border-color: var(--accent);
-  transform: translateY(-3px);
-}
-
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:60px 20px;
-  color:var(--sub);
-  font-size: 0.9rem;
-}
-
-/* RESPONSIVE */
-@media(max-width:950px){
-  .split{grid-template-columns:1fr; gap: 40px;}
-  .intro{position:relative; top:0; padding-bottom: 40px; border-bottom: 1px solid var(--border)}
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ | Nguyễn Quốc Khang</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+<body>
 
-<body id="home"> <nav>
-  <div class="nav-inner">
-    <strong style="color:var(--accent); font-size: 1.3rem;">Khang Blog</strong>
-    <div>
-      <a href="#home">Home</a>
-      <a href="#blog">Blog</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a> 
+<nav>
+    <div class="nav-inner">
+        <strong style="color:var(--accent); font-size: 1.3rem;">Khang Blog</strong>
+        <div>
+            <a href="index.html" class="menu-link active">Home</a>
+            <a href="blog.html" class="menu-link">Blog</a>
+            <a href="about.html" class="menu-link">About</a>
+            <a href="contact.html" class="menu-link">Contact</a>
+        </div>
     </div>
-  </div>
 </nav>
 
 <div class="container">
-  <section class="split">
-    <aside class="intro" id="about">
-      <img src="AvatarKhang.png" class="avatar" alt="Nguyễn Quốc Khang">
-      <h1>Nguyễn Quốc Khang</h1>
-      <p>
-        Xin chào! Mình là một sinh viên CNTT đam mê khám phá thế giới lập trình Web và hệ thống mạng. <br><br>
-        Chào mừng bạn đến với góc nhỏ chia sẻ kiến thức của mình! 🚀
-      </p>
-    </aside>
-
-    <main id="blog"></main>
-  </section>
-
-  <section class="contact-section" id="contact">
-    <h2>Kết nối với mình</h2>
-    <p>Bạn có câu hỏi hay muốn hợp tác? Đừng ngần ngại liên hệ nhé!</p>
-    <div class="contact-links">
-      <a href="mailto:your-email@gmail.com" class="contact-btn">Email của mình</a>
-      <a href="https://facebook.com/your-profile" target="_blank" class="contact-btn">Facebook</a>
-      <a href="https://github.com/your-github" target="_blank" class="contact-btn">GitHub</a>
+    <div style="text-align: center; margin-bottom: 60px;">
+        <img src="AvatarKhang.png" alt="Avatar" style="width:150px; height:150px; border-radius:50%; object-fit:cover; margin-bottom:20px;">
+        <h1>Nguyễn Quốc Khang</h1>
+        <p style="color:var(--sub); max-width:600px; margin:auto;">
+            Chào mừng đến với Portfolio của mình. Đây là nơi mình lưu trữ các chứng chỉ mạng Cisco và chia sẻ kiến thức về Lập trình mạng.
+        </p>
     </div>
-  </section>
+
+    <section>
+        <h2 class="section-title">Chứng chỉ Cisco & Network</h2>
+        <div class="grid-layout">
+            <div class="card">
+                <h3>CCNA: Switching & Routing</h3>
+                <p>Chứng chỉ cơ bản về hạ tầng mạng, định tuyến và chuyển mạch.</p>
+                <a href="files/ccna-cert.pdf" class="btn" target="_blank">Xem PDF</a>
+            </div>
+            <div class="card">
+                <h3>Cisco CyberOps Associate</h3>
+                <p>Kiến thức về bảo mật, giám sát và phân tích các mối đe dọa an ninh mạng.</p>
+                <a href="files/cyberops.pdf" class="btn" target="_blank">Xem PDF</a>
+            </div>
+            <div class="card">
+                <h3>DevNet Associate</h3>
+                <p>Kết hợp giữa Network và lập trình tự động hóa (Automation).</p>
+                <a href="files/devnet.pdf" class="btn" target="_blank">Xem PDF</a>
+            </div>
+        </div>
+    </section>
+
+    <section style="margin-top: 60px; text-align: center; background: white; padding: 40px; border-radius: 20px; border: 1px solid var(--border);">
+        <h2>Góc chia sẻ kiến thức</h2>
+        <p>Mình có viết các bài chuyên sâu về Lập trình mạng (Socket, TCP/IP, HTTP...).</p>
+        <br>
+        <a href="blog.html" class="btn" style="padding: 15px 40px; font-size: 1.1rem;">Đến trang Blog →</a>
+    </section>
 </div>
 
-<footer>
-© 2025 • Nguyễn Quốc Khang • Blog Cá Nhân
-</footer>
-
-<script>
-const posts=[
- {cat:"WEB",title:"Làm chủ Flexbox & Grid",date:"12/12/2025",desc:"Hướng dẫn chi tiết cách dàn trang hiện đại giúp website của bạn linh hoạt trên mọi thiết kế."},
- {cat:"JS",title:"Bí mật của Async/Await",date:"10/12/2025",desc:"Tìm hiểu cách viết mã JavaScript sạch đẹp và chuyên nghiệp hơn với cơ chế này."},
- {cat:"NETWORK",title:"TCP vs UDP: Khi nào nên dùng?",date:"08/12/2025",desc:"So sánh chuyên sâu về hai giao thức cốt lõi để tối ưu hóa ứng dụng mạng của bạn."}
-];
-
-const blog=document.getElementById("blog");
-posts.forEach(p=>{
-  blog.innerHTML+=`
-    <article class="blog-item">
-      <div class="tag">${p.cat} • ${p.date}</div>
-      <h3>${p.title}</h3>
-      <p>${p.desc}</p>
-      <a href="#" style="color:var(--accent);font-weight:700; text-decoration: none;">Đọc chi tiết →</a>
-    </article>
-  `;
-});
-</script>
-
+<footer>© 2025 • Nguyễn Quốc Khang</footer>
 </body>
 </html>
