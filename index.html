@@ -7,34 +7,76 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
-        /* Chia cột cho phần Grid Layout */
+        /* ===== Layout tổng ===== */
+        .profile-layout {
+            display: grid;
+            grid-template-columns: 1.2fr 2fr;
+            gap: 40px;
+            align-items: start;
+            margin-top: 40px;
+        }
+
+        /* ===== Tiểu sử ===== */
+        .profile-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .profile-card img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .profile-info {
+            text-align: left;
+            margin-top: 20px;
+            color: var(--sub);
+        }
+
+        .profile-info p {
+            margin-bottom: 10px;
+        }
+
+        /* ===== Grid chứng chỉ ===== */
         .grid-layout {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Ép buộc chia 3 cột bằng nhau */
-            gap: 20px; /* Khoảng cách giữa các thẻ */
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
             margin-top: 20px;
         }
 
-        /* Đảm bảo thẻ Card hiển thị gọn gàng */
         .card {
             background: #fff;
             padding: 20px;
             border-radius: 8px;
             border: 1px solid #ddd;
-            display: flex;       /* Để nội dung bên trong canh chỉnh đẹp hơn */
+            display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
+        /* ===== Responsive ===== */
         @media (max-width: 768px) {
+            .profile-layout {
+                grid-template-columns: 1fr;
+            }
+
             .grid-layout {
                 grid-template-columns: 1fr;
             }
         }
     </style>
-    </head>
+</head>
+
 <body>
 
+<!-- ===== NAV ===== -->
 <nav>
     <div class="nav-inner">
         <strong style="color:var(--accent); font-size: 1.3rem;">Khang Blog</strong>
@@ -47,46 +89,69 @@
     </div>
 </nav>
 
+<!-- ===== MAIN ===== -->
 <div class="container">
-    <div style="text-align: center; margin-bottom: 60px;">
-        <img src="AvatarKhang.png" alt="Avatar" style="width:150px; height:150px; border-radius:50%; object-fit:cover; margin-bottom:20px;">
-        <h1>Nguyễn Quốc Khang</h1>
-        <p style="color:var(--sub); max-width:600px; margin:auto;">
-            Chào mừng đến với Portfolio của mình. Đây là nơi mình lưu trữ các chứng chỉ mạng Cisco và chia sẻ kiến thức về Lập trình mạng.
-        </p>
-    </div>
 
-    <section>
-        <h2 class="section-title">Chứng chỉ Cisco & Network</h2>
-        <div class="grid-layout">
-            <div class="card">
-                <h3>Network Basic</h3>
-                <p>Kiến thức nền tảng về mạng máy tính, các thiết bị mạng và mô hình kết nối cơ bản.</p>
-                <a href="certs/network_basic.pdf" class="btn" target="_blank">Xem PDF</a>
-            </div>
+    <!-- ===== PROFILE + CERT ===== -->
+    <section class="profile-layout">
 
-            <div class="card">
-                <h3>Essential 1</h3>
-                <p>Nhập môn công nghệ thông tin: Phần cứng máy tính, cài đặt phần mềm và xử lý sự cố cơ bản.</p>
-                <a href="certs/essentials_1.pdf" class="btn" target="_blank">Xem PDF</a>
-            </div>
-           
-            <div class="card">
-                <h3>Essential 2</h3>
-                <p>Nâng cao về hệ điều hành, quản trị hệ thống mạng và các nguyên tắc bảo mật thông tin.</p>
-                <a href="certs/essentials_2.pdf" class="btn" target="_blank">Xem PDF</a>
+        <!-- TIỂU SỬ -->
+        <div class="profile-card">
+            <img src="AvatarKhang.png" alt="Avatar Nguyễn Quốc Khang">
+            <h1>Nguyễn Quốc Khang</h1>
+            <p style="color:var(--sub);">
+                Sinh viên CNTT • Định hướng Network & Backend
+            </p>
+
+            <div class="profile-info">
+                <p>🎓 <strong>Chuyên ngành:</strong> Công nghệ thông tin</p>
+                <p>🌐 <strong>Quan tâm:</strong> Networking, TCP/IP, Socket</p>
+                <p>💻 <strong>Kỹ năng:</strong> C, Java, Node.js, Linux</p>
+                <p>📚 <strong>Mục tiêu:</strong> Network Engineer / Backend Dev</p>
             </div>
         </div>
+
+        <!-- CHỨNG CHỈ -->
+        <div>
+            <h2 class="section-title">Chứng chỉ Cisco & Network</h2>
+
+            <div class="grid-layout">
+                <div class="card">
+                    <h3>Network Basic</h3>
+                    <p>Kiến thức nền tảng về mạng máy tính, thiết bị mạng và mô hình kết nối.</p>
+                    <a href="certs/network_basic.pdf" class="btn" target="_blank">Xem PDF</a>
+                </div>
+
+                <div class="card">
+                    <h3>Essential 1</h3>
+                    <p>Nhập môn CNTT: Phần cứng, phần mềm và xử lý sự cố.</p>
+                    <a href="certs/essentials_1.pdf" class="btn" target="_blank">Xem PDF</a>
+                </div>
+
+                <div class="card">
+                    <h3>Essential 2</h3>
+                    <p>Hệ điều hành, quản trị mạng và các nguyên tắc bảo mật.</p>
+                    <a href="certs/essentials_2.pdf" class="btn" target="_blank">Xem PDF</a>
+                </div>
+            </div>
+        </div>
+
     </section>
 
+    <!-- ===== CTA BLOG ===== -->
     <section style="margin-top: 60px; text-align: center; background: white; padding: 40px; border-radius: 20px; border: 1px solid var(--border);">
         <h2>Góc chia sẻ kiến thức</h2>
         <p>Mình có viết các bài chuyên sâu về Lập trình mạng (Socket, TCP/IP, HTTP...).</p>
         <br>
-        <a href="blog.html" class="btn" style="padding: 15px 40px; font-size: 1.1rem;">Đến trang Blog →</a>
+        <a href="blog.html" class="btn" style="padding: 15px 40px; font-size: 1.1rem;">
+            Đến trang Blog →
+        </a>
     </section>
+
 </div>
 
+<!-- ===== FOOTER ===== -->
 <footer>© 2025 • Nguyễn Quốc Khang</footer>
+
 </body>
 </html>
