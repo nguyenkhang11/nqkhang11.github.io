@@ -45,26 +45,30 @@
             <!-- CV -->
             <h2 class="section-title" style="margin-top: 50px;">📄 CV</h2>
             <p style="color: var(--sub);">
-                Xem CV của tôi trực tiếp trên website hoặc tải về file PDF.
+                Xem và tải CV của tôi trực tiếp tại đây.
             </p>
 
-            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                <button class="btn"
-                        onclick="toggleCV()"
-                        style="background: var(--accent); color: white;">
-                    👁 Xem CV
-                </button>
+            <!-- ONE BUTTON -->
+            <button class="btn"
+                    onclick="toggleCV()"
+                    style="background: var(--accent); color: white;">
+                👁 Xem CV
+            </button>
 
-                <a href="CVKhang.pdf"
-                   target="_blank"
-                   class="btn"
-                   style="background: #e0e7ff; color: var(--accent);">
-                    📥 Tải CV
-                </a>
-            </div>
-
-            <!-- PDF VIEWER -->
+            <!-- CV VIEW -->
             <div id="cv-viewer" style="display: none; margin-top: 25px;">
+
+                <!-- DOWNLOAD -->
+                <div style="margin-bottom: 15px;">
+                    <a href="CVKhang.pdf"
+                       download
+                       class="btn"
+                       style="background: #e0e7ff; color: var(--accent);">
+                        📥 Tải CV (PDF)
+                    </a>
+                </div>
+
+                <!-- PDF -->
                 <iframe
                     src="CVKhang.pdf"
                     style="
